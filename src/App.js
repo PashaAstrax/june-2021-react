@@ -1,6 +1,7 @@
 import Simpsons from "./components/HomeWork/Simpsons";
 
 export default function App() {
+
     return (
 
     <div className="about">
