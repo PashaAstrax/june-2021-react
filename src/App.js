@@ -1,4 +1,4 @@
-import Simpsons from "./components/HomeWork/Simpsons";
+import Simpsons from "./components/Simpsons";
 
 export default function App() {
     return (
