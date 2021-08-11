@@ -1,4 +1,5 @@
 import User from "../user/User";
+import "../Style.css"
 
 export default function Users() {
     let usersList = [
@@ -236,7 +237,6 @@ export default function Users() {
     return (
     <div>
         <div className={"users"}>
-
             <User user={usersList[0]}/>
             <User user={usersList[1]}/>
             <User user={usersList[2]}/>
