@@ -12,7 +12,7 @@ export default function Post({item}) {
 
   return (
     <div>
-        <h3>"{item.title}"</h3>
+        <h2>"{item.title}"</h2>
         <Comments itemS={comments}/>
     </div>
   );

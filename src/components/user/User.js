@@ -12,7 +12,8 @@ export default function User({userS}) {
 
   return (
     <div>
-        <h2>{userS.id}. {userS.name}</h2>
+        <hr/>
+        <h1>{userS.id}. {userS.name}</h1>
         <Posts items={posts}/>
     </div>
   );
