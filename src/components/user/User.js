@@ -1,23 +1,13 @@
-import {useEffect, useState} from "react";
-import {getPostsOfUser} from "../../services/user.fetch.service";
-import Posts from "../posts/Posts";
+export default function User({thisUser, postsFunction}) {
 
-export default function User({item, choseUser }) {
-
-    const onClickUserChose = () => {
-        choseUser(item);
+    const postsDisplay = () => {
+        postsFunction(thisUser.id)
     }
 
-    // let [posts, setPosts] = useState([])
-    // useEffect(() => {
-    //     getPostsOfUser(item.id).then(({value}) => console.log(value))
-    // }, [item.id])
-
-  return (
-    <div>
-        {item.id}. {item.name} {""}
-        <button onClick={onClickUserChose}>posts</button>
-        {/*<Posts items={posts}/>*/}
-    </div>
-  );
+    return (
+        <div>
+            <h3>{thisUser.id}. {thisUser.name} {""}
+            <button onClick={postsDisplay}>posts</button></h3>
+        </div>
+    );
 }
