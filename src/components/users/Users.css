@@ -1,0 +1,15 @@
+.wrap {
+    display: flex;
+}
+
+.wrap > div{
+    width: 50%;
+}
+
+.users-box {
+    background: burlywood;
+}
+
+.chosen-one {
+    background: cornflowerblue;
+}
