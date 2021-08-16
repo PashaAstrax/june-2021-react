@@ -1,7 +1,7 @@
 export default function Incomment({value}) {
   return (
     <div>
-        {value}
+        - <i>{value}</i>
     </div>
   );
 }

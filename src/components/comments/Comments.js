@@ -6,27 +6,27 @@ import Incomment from "../incomment/Incomment";
 export default function Comments() {
 
     let [comments, setComments] = useState([])
-    let [comment, setComment] = useState([])
+    let [comment, setComment] = useState(null)
 
     useEffect(() => {
         getComments().then(value => setComments([...value]))
     }, [])
 
-    const commentsFunc = (id) => {
-        setComment([...id])
+    const commentsFunc = (value) => {
+        setComment([...value])
     }
 
   return (
-    <div>
+    <div className={"wrap"}>
         <div className={"comments"}>
             {
-                comments.map(thisComment => <Comment key={thisComment.id} commentsFunc={commentsFunc}/>)
+                comments.map(thisComment => <Comment key={thisComment.id} thisComment={thisComment} commentsFunc={commentsFunc}/>)
             }
         </div>
 
         <div className={"comment"}>
             {
-                <Incomment value={comment}/>
+                comment && <Incomment value={comment}/>
             }
         </div>
     </div>

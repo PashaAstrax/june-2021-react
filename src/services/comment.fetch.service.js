@@ -1,7 +1,7 @@
-const url = "https://jsonplaceholder.typicode.com/comments";
+const URL = "https://jsonplaceholder.typicode.com/comments";
 
 const getComments = () => {
-    return fetch(url).then(value => value.json())
-}
+    return fetch(URL).then(value => value.json())
+};
 
 export {getComments};

@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {getPosts} from "../../services/post.fetch.service";
 import Post from "../post/Post";
 import Inpost from "../inpost/Inpost";
-import "./Posts.css"
+import "./Style.css"
 
 export default function Posts() {
 
