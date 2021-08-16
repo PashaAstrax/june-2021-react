@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {getPosts} from "../../services/post.fetch.service";
 import Post from "../post/Post";
 import Inpost from "../inpost/Inpost";
+import "./Posts.css"
 
 export default function Posts() {
 
@@ -17,12 +18,14 @@ export default function Posts() {
     }
 
     return (
-    <div>
-        <div>
+    <div className={"wrap"}>
+        <div className={"posts"}>
             {
                 posts.map(thisPost => <Post key={thisPost.id} thisPost={thisPost} postsFunction={postsFunction}/>)
             }
+        </div>
 
+        <div className={"post"}>
             {
                 post && <Inpost value={post}/>
             }
