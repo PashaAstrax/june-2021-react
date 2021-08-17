@@ -13,8 +13,8 @@ export default function Users() {
         getUsers().then(value => setUsers([...value]))
     }, [])
 
-    const postsFunction = (userId) => {
-        getPostsOfUser(userId).then(value => setPosts([...value]))
+    const postsFunction = (id) => {
+        getPostsOfUser(id).then(value => setPosts([...value]))
     }
 
     return (
