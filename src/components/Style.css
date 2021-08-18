@@ -1,0 +1,10 @@
+.forms {
+    text-align: center;
+    background: darkcyan;
+}
+
+.info-car > div{
+    border: solid;
+    margin-top: 5px;
+    background: bisque;
+}
