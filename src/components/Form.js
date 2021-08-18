@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {saveCar} from "../service/car.api.service";
 import Inform from "./Inform";
 import {getCars} from "../service/get.car.api.service";
+import "./Style.css"
 
 export default function Form() {
 
@@ -16,22 +17,23 @@ export default function Form() {
         getCars().then(value => setCars([...value]))
     }, []);
 
-    let save = (e) => {
-        e.preventDefault();
+    let save = () => {
+        // e.preventDefault();
         console.log(formState);
         saveCar(formState);
     };
     return (
-        <div>
-            <div>
+        <div className={"wrap"}>
+            <div className={"forms"}>
                 <form onSubmit={save}>
                     <input type="text" name={"model"} value={formState.model} onChange={onFormInputChange} placeholder={"model"}/>
                     <input type="number" name={"price"} value={formState.price} onChange={onFormInputChange} placeholder={"price"}/>
-                    <input type="number" name={"year"} value={formState.year} onChange={onFormInputChange} placeholder={"price"}/>
+                    <input type="number" name={"year"} value={formState.year} onChange={onFormInputChange} placeholder={"year"}/>
                     <input type="submit"/>
                 </form>
             </div>
-            <div>
+
+            <div className={"info-car"}>
                 {
                     cars.map(thisCars => <Inform key={thisCars.id} thisCars={thisCars}/>)
                 }
