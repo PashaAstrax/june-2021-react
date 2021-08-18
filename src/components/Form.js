@@ -19,6 +19,8 @@ export default function Form() {
     let save = (e) => {
         // e.preventDefault()
         saveCar(formState)
+        // let carToSave = {model: e.target.model.value, price: e.target.price.value, year: e.target.year.value}
+        // saveCar(carToSave).then(value => setCars([...cars, value]));
     }
 
     const delFunction = (id) => {
