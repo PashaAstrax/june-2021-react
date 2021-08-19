@@ -14,11 +14,11 @@ export default function Form() {
     };
 
     useEffect(() => {
-        getCars().then(value => setCars([...value]))
-    }, []);
+        getCars().then(value => setCars(value.reverse()))
+    }, [cars]);
 
-    let save = () => {
-        // e.preventDefault();
+    let save = (e) => {
+        e.preventDefault();
         console.log(formState);
         saveCar(formState);
     };
