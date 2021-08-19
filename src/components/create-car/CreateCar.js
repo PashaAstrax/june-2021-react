@@ -5,21 +5,21 @@ export default function CreateCar() {
     let save = (e) => {
         e.preventDefault()
 
-        if (e.target.model.value.length > 20) {
-            window.alert('too long model (must not be longer than 20 characters)')
-        } else {
-            if (e.target.price.value < 0) {
-                window.alert('enter correct price')
+        if (e.target.model.value.length > 20 || e.target.model.value.length < 1) {
+            window.alert("model: only alpha min 1 max 20 characters");
+        }else {
+            if (e.target.price.value <= 0) {
+                window.alert("price: greater or equal than 0");
             } else {
-                if (e.target.year.value < 1990 || +e.target.year.value > 2021) {
-                    window.alert('enter correct year (must not be less than 1990)')
+                if (e.target.year.value < 1990 || e.target.year.value > 2021) {
+                    window.alert("year: min 1990, max current year");
                 } else {
-                    let newCar = {
+                    let carToSave = {
                         model: e.target.model.value,
                         price: e.target.price.value,
                         year: e.target.year.value
                     }
-                    saveCar(newCar)
+                    saveCar(carToSave)
                 }
             }
         }
