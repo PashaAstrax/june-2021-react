@@ -1,44 +1,54 @@
+import "./Style.css"
 import {useEffect, useState} from "react";
 import {deleteCar, getCars, patchCar, saveCar} from "../services/car.service";
 import Inform from "./Inform";
-import "./Style.css"
 
 export default function Form() {
 
-    let [formState, setFormState] = useState({model: "", price: "", year: ""});
-    let [cars, setCars] = useState([])
-
-    let onFormInputChange = (e) => {
-        setFormState({...formState, [e.target.name]: e.target.value});
-    };
+    let [cars, setCars] = useState([]);
 
     useEffect(() => {
-        getCars().then(value => setCars([...value]))
-    }, [])
+        getCars().then(value => setCars(value.reverse()))
+    }, [cars]);
 
     let save = (e) => {
-        // e.preventDefault()
-        saveCar(formState)
-        // let carToSave = {model: e.target.model.value, price: e.target.price.value, year: e.target.year.value}
-        // saveCar(carToSave).then(value => setCars([...cars, value]));
-    }
-
+        e.preventDefault()
+        if (e.target.model.value.length > 20 || e.target.model.value.length < 1) {
+            window.alert("model: only alpha min 1 max 20 characters");
+        }else {
+            if (e.target.price.value <= 0) {
+                window.alert("price: greater or equal than 0");
+            } else {
+                if (e.target.year.value < 1990 || e.target.year.value > 2021) {
+                    window.alert("year: min 1990, max current year");
+                } else {
+                    let carToSave = {
+                        model: e.target.model.value,
+                        price: e.target.price.value,
+                        year: e.target.year.value
+                    }
+                    saveCar(carToSave)
+                }
+            }
+        }
+    };
     const delFunction = (id) => {
         deleteCar(id)
         let filterCars = cars.filter(value => value.id !== id);
         setCars([...filterCars])
-    }
+    };
 
     const patchFunction = (id) => {
         patchCar(id)
-    }
+    };
+
   return (
     <div>
         <div className={"forms"}>
             <form onSubmit={save}>
-                <input type="text" name={"model"} value={formState.model} onChange={onFormInputChange} placeholder={"model"}/>
-                <input type="number" name={"price"} value={formState.price} onChange={onFormInputChange} placeholder={"price"}/>
-                <input type="number" name={"year"} value={formState.year} onChange={onFormInputChange} placeholder={"year"}/>
+                <input type="text" name={"model"} placeholder={"model"}/>
+                <input type="number" name={"price"} placeholder={"price"}/>
+                <input type="number" name={"year"} placeholder={"year"}/>
                 <input type="submit"/>
             </form>
         </div>
