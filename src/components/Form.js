@@ -6,6 +6,7 @@ import Inform from "./Inform";
 export default function Form() {
 
     let [cars, setCars] = useState([]);
+    let [formState, setFormState] = useState({model: "", price: "", year: ""})
 
     useEffect(() => {
         getCars().then(value => setCars(value.reverse()))
@@ -38,17 +39,18 @@ export default function Form() {
         setCars([...filterCars])
     };
 
-    const patchFunction = (id) => {
-        patchCar(id)
+    const patchFunction = (value) => {
+        // patchCar(value)
+        setFormState({...value})
     };
 
   return (
     <div>
         <div className={"forms"}>
             <form onSubmit={save}>
-                <input type="text" name={"model"} placeholder={"model"}/>
-                <input type="number" name={"price"} placeholder={"price"}/>
-                <input type="number" name={"year"} placeholder={"year"}/>
+                <input type="text" name={"model"} value={formState.model} onChange={patchFunction} placeholder={"model"}/>
+                <input type="number" name={"price"} value={formState.price} onChange={patchFunction} placeholder={"price"}/>
+                <input type="number" name={"year"} value={formState.year} onChange={patchFunction} placeholder={"year"}/>
                 <input type="submit"/>
             </form>
         </div>
