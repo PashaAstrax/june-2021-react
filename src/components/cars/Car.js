@@ -3,7 +3,6 @@ export default function Car({thisCars}) {
     <div className={"this-cars"}>
         <hr/>
         <h4>{thisCars.id}. <i>{thisCars.model}</i>, {thisCars.price}$, {thisCars.year} year</h4>
-        {/*<hr/>*/}
     </div>
   );
 }
