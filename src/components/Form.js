@@ -6,7 +6,7 @@ import Inform from "./Inform";
 export default function Form() {
 
     let [cars, setCars] = useState([]);
-    let [formState, setFormState] = useState({model: "", price: "", year: ""})
+    let [formState, setFormState] = useState({model: "", price: "", year: "", id: ""})
 
     useEffect(() => {
         getCars().then(value => setCars(value.reverse()))
@@ -26,9 +26,14 @@ export default function Form() {
                     let carToSave = {
                         model: e.target.model.value,
                         price: e.target.price.value,
-                        year: e.target.year.value
+                        year: e.target.year.value,
+                        id: 5113
                     }
-                    saveCar(carToSave)
+                    // saveCar(carToSave)
+                    if (carToSave.id === "") {
+                        saveCar(carToSave)
+                    } else {
+                        patchCar(carToSave)}
                 }
             }
         }
