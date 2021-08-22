@@ -5,7 +5,7 @@ import {
     Link,
     withRouter, useHistory
 } from "react-router-dom";
-import UserDetails from "../user-details/UserDetails";
+// import UserDetails from "../user-details/UserDetails";
 
 export default function User({thisUser, history}) {
     // let history = useHistory();
@@ -18,9 +18,6 @@ export default function User({thisUser, history}) {
         {/*{thisUser.id}. {thisUser.name} - <Link to={{pathname: "/users/" + thisUser.id}}>user static details</Link>*/}
         {thisUser.id}. {thisUser.name} - <button  onClick={navigate}>more info</button>
         <hr/>
-
-        {/*інфа під кожним юзером*/}
-        {/*<Route path={"/users/" + thisUser.id} component={UserDetails}/>*/}
     </div>
   );
 }
