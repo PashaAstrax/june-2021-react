@@ -12,6 +12,7 @@ export default function Users() {
     <div>
         {
             users.map(thisUser => <User key={thisUser.id} thisUser={thisUser}/>)
+            // users.map(thisUser => {return <div><h3>{thisUser.id}. {thisUser.name}</h3></div>})
         }
     </div>
   );
