@@ -1,6 +1,6 @@
 import {useParams} from "react-router";
 import {useEffect, useState} from "react";
-import {getUser} from "../../services/service.api";
+import {getUser} from "../../services/user.service";
 import AboutUser from "../users/AboutUser";
 
 export default function UserDetails(/*{match: {params: {id}}}*/) {

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getUsers} from "../../services/service.api";
+import {getUsers} from "../../services/user.service";
 import User from "./User";
 // import StaticUserDetails from "../static-user-details/StaticUserDetails";
 import {Route} from "react-router-dom";
