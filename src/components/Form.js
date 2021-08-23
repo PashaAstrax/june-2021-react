@@ -27,13 +27,13 @@ export default function Form() {
                         model: e.target.model.value,
                         price: e.target.price.value,
                         year: e.target.year.value,
-                        id: 5113
+                        // id: 5135
                     }
-                    // saveCar(carToSave)
-                    if (carToSave.id === "") {
-                        saveCar(carToSave)
-                    } else {
-                        patchCar(carToSave)}
+                    saveCar(carToSave)
+                    // if (carToSave.id === "") {
+                    //     patchCar(carToSave)
+                    // } else {
+                    //     saveCar(carToSave)}
                 }
             }
         }
@@ -45,7 +45,7 @@ export default function Form() {
     };
 
     const patchFunction = (value) => {
-        // patchCar(value)
+        // patchCar()
         setFormState({...value})
     };
 
