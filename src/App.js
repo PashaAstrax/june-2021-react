@@ -1,3 +1,4 @@
+import "./App.css"
 import {
     BrowserRouter as Router,
     Switch,
@@ -6,17 +7,14 @@ import {
     withRouter
 } from "react-router-dom";
 import Users from "./components/users/Users";
-// import StaticUserDetails from "./components/static-user-details/StaticUserDetails";
 import Posts from "./components/posts/Posts";
 
 export default function App() {
   return (
       <Router>
-          <div>
+          <div className={"links"}>
               <Link to={"/"}>Home</Link>
-              <br/>
               <Link to={"/users"}>Users page</Link>
-              <br/>
               <Link to={"/posts"}>Posts page</Link>
           </div>
           <Switch>

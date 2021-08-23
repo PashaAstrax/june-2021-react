@@ -1,1 +1,10 @@
+.links {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
+.links > a {
+    text-decoration: none;
+}

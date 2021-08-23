@@ -5,7 +5,6 @@ import {
     Link,
     withRouter, useHistory
 } from "react-router-dom";
-// import UserDetails from "../user-details/UserDetails";
 
 export default function User({thisUser, history}) {
     // let history = useHistory();
@@ -14,8 +13,6 @@ export default function User({thisUser, history}) {
     };
     return (
     <div>
-        {/*{thisUser.id}. {thisUser.name} - <Link to={{pathname: "/users/" + thisUser.id, state: thisUser}}>user static details</Link>*/}
-        {/*{thisUser.id}. {thisUser.name} - <Link to={{pathname: "/users/" + thisUser.id}}>user static details</Link>*/}
         {thisUser.id}. {thisUser.name} - <button  onClick={navigate}>more info</button>
         <hr/>
     </div>

@@ -5,16 +5,16 @@ import {
     Link,
     withRouter, useHistory
 } from "react-router-dom";
+import PostDetails from "../post-details/PostDetails";
 
 export default function Post({thisPosts}) {
-    // console.log(useHistory())
-    // console.log(history.state)
+
   return (
     <div>
-        <h4>{thisPosts.id}. <i>{thisPosts.title}</i></h4> - <Link to={{pathname: "/posts/" + thisPosts.id}}>More info</Link>
-        {/*<h4>- {thisPosts.body}</h4>*/}
-
         <hr/>
+        <h4>{thisPosts.id}. <i>{thisPosts.title}</i> - <Link to={{pathname : /posts/ + thisPosts.id, state : thisPosts}}>More info</Link></h4>
+
+        <Route path={'/posts/' + thisPosts.id} component={PostDetails}/>
     </div>
   );
 }
