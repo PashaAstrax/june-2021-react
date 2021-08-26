@@ -1,6 +1,6 @@
 import "./Style.css"
 import {useEffect, useState} from "react";
-import {getCars, putCar, saveCar} from "../services/car.service";
+import {getCars, putCar, saveCar} from "../services/cars.service";
 import Inform from "./Inform";
 
 export default function Form() {

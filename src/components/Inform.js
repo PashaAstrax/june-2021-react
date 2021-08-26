@@ -1,4 +1,4 @@
-import {deleteCar} from "../services/car.service";
+import {deleteCar} from "../services/cars.service";
 
 export default function Inform({thisCars, putFunction}) {
 
