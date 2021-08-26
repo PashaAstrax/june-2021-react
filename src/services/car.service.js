@@ -23,7 +23,7 @@ const deleteCar = (id) => {
     })
 }
 
-const patchCar = (car, id) => {
+const putCar = (car, id) => {
     fetch(urlTemp + "/" + id, {
         method: "PUT",
         body: JSON.stringify(car),
@@ -36,4 +36,4 @@ const patchCar = (car, id) => {
 }
 
 
-export {saveCar, getCars, deleteCar, patchCar}
+export {saveCar, getCars, deleteCar, putCar}

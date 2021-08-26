@@ -1,6 +1,6 @@
 import "./Style.css"
 import {useEffect, useState} from "react";
-import {getCars, patchCar, saveCar} from "../services/car.service";
+import {getCars, putCar, saveCar} from "../services/car.service";
 import Inform from "./Inform";
 
 export default function Form() {
@@ -13,7 +13,7 @@ export default function Form() {
     }, [cars]);
 
     let save = (e) => {
-        // e.preventDefault()
+        e.preventDefault()
         if (e.target.model.value.length > 20 || e.target.model.value.length < 1) {
             window.alert("model: only alpha min 1 max 20 characters");
         }else {
@@ -31,7 +31,7 @@ export default function Form() {
                     if (formState === null) {
                         saveCar(carToSave)
                     } else {
-                        patchCar(carToSave, formState.id)}
+                        putCar(carToSave, formState.id)}
                 }
             }
         }
@@ -45,11 +45,11 @@ export default function Form() {
     let onPriceChange = (e) => {setPrice(e.target.value)}
     let onYearChange = (e) => {setYear(e.target.value)}
 
-    let patchFunction = (editThisCar) => {
-        setFormState({...editThisCar})
-        setModel(editThisCar.model)
-        setPrice(editThisCar.price)
-        setYear(editThisCar.year)
+    let putFunction = (editCar) => {
+        setFormState({...editCar})
+        setModel(editCar.model)
+        setPrice(editCar.price)
+        setYear(editCar.year)
     }
 
   return (
@@ -65,7 +65,7 @@ export default function Form() {
 
         <div className={"info-car"}>
             {
-                cars.map(thisCars => <Inform key={thisCars.id} thisCars={thisCars} patchFunction={patchFunction}/>)
+                cars.map(thisCars => <Inform key={thisCars.id} thisCars={thisCars} putFunction={putFunction}/>)
             }
         </div>
     </div>

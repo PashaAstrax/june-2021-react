@@ -1,13 +1,13 @@
 import {deleteCar} from "../services/car.service";
 
-export default function Inform({thisCars, patchFunction}) {
+export default function Inform({thisCars, putFunction}) {
 
     const delFunction = () => {
         deleteCar(thisCars.id)
     };
     
-    const editThisCar = () => {
-        patchFunction(thisCars)
+    const editCar = () => {
+        putFunction(thisCars)
     }
     
     return (
@@ -16,7 +16,7 @@ export default function Inform({thisCars, patchFunction}) {
 
         <button type={"submit"} onClick={delFunction}>delete</button>
 
-        <button type={"submit"} onClick={editThisCar}>edit</button>
+        <button type={"submit"} onClick={editCar}>edit</button>
     </div>
   );
 }
