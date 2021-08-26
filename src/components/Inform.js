@@ -1,16 +1,22 @@
-// import {patchCar} from "../services/car.service";
+import {deleteCar} from "../services/car.service";
 
-export default function Inform({thisCars, delFunction, patchFunction}) {
+export default function Inform({thisCars, patchFunction}) {
+
+    const delFunction = () => {
+        deleteCar(thisCars.id)
+    };
+    
+    const editThisCar = () => {
+        patchFunction(thisCars)
+    }
+    
     return (
     <div>
         <h4>#{thisCars.id}, <i>"{thisCars.model}",</i> {thisCars.price}$, {thisCars.year} year</h4>
 
-        <button onClick={() => {delFunction(thisCars.id)
-            console.log("delete:", thisCars)}}>delete
-        </button>
+        <button type={"submit"} onClick={delFunction}>delete</button>
 
-        <button onClick={() => {patchFunction(thisCars)
-            console.log("car update...", thisCars)}}>edit</button>
+        <button type={"submit"} onClick={editThisCar}>edit</button>
     </div>
   );
 }

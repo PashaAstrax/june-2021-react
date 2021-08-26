@@ -23,9 +23,9 @@ const deleteCar = (id) => {
     })
 }
 
-const patchCar = (car) => {
-    fetch(urlTemp + "/" + car.id, {
-        method: "PATCH",
+const patchCar = (car, id) => {
+    fetch(urlTemp + "/" + id, {
+        method: "PUT",
         body: JSON.stringify(car),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',

@@ -1,19 +1,19 @@
 import "./Style.css"
 import {useEffect, useState} from "react";
-import {deleteCar, getCars, patchCar, saveCar} from "../services/car.service";
+import {getCars, patchCar, saveCar} from "../services/car.service";
 import Inform from "./Inform";
 
 export default function Form() {
 
     let [cars, setCars] = useState([]);
-    let [formState, setFormState] = useState({model: "", price: "", year: "", id: ""})
+    let [formState, setFormState] = useState(null);
 
     useEffect(() => {
         getCars().then(value => setCars(value.reverse()))
     }, [cars]);
 
     let save = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         if (e.target.model.value.length > 20 || e.target.model.value.length < 1) {
             window.alert("model: only alpha min 1 max 20 characters");
         }else {
@@ -27,42 +27,45 @@ export default function Form() {
                         model: e.target.model.value,
                         price: e.target.price.value,
                         year: e.target.year.value,
-                        // id: 5135
                     }
-                    saveCar(carToSave)
-                    // if (carToSave.id === "") {
-                    //     patchCar(carToSave)
-                    // } else {
-                    //     saveCar(carToSave)}
+                    if (formState === null) {
+                        saveCar(carToSave)
+                    } else {
+                        patchCar(carToSave, formState.id)}
                 }
             }
         }
     };
-    const delFunction = (id) => {
-        deleteCar(id)
-        let filterCars = cars.filter(value => value.id !== id);
-        setCars([...filterCars])
-    };
 
-    const patchFunction = (value) => {
-        // patchCar()
-        setFormState({...value})
-    };
+    let [model, setModel] = useState('model')
+    let [price, setPrice] = useState('price')
+    let [year, setYear] = useState('year')
+
+    let onModelChange = (e) => {setModel(e.target.value)}
+    let onPriceChange = (e) => {setPrice(e.target.value)}
+    let onYearChange = (e) => {setYear(e.target.value)}
+
+    let patchFunction = (editThisCar) => {
+        setFormState({...editThisCar})
+        setModel(editThisCar.model)
+        setPrice(editThisCar.price)
+        setYear(editThisCar.year)
+    }
 
   return (
     <div>
         <div className={"forms"}>
             <form onSubmit={save}>
-                <input type="text" name={"model"} value={formState.model} onChange={patchFunction} placeholder={"model"}/>
-                <input type="number" name={"price"} value={formState.price} onChange={patchFunction} placeholder={"price"}/>
-                <input type="number" name={"year"} value={formState.year} onChange={patchFunction} placeholder={"year"}/>
+                <input type="text" name={"model"} value={model} onChange={onModelChange} placeholder={"model"}/>
+                <input type="text" name={"price"} value={price} onChange={onPriceChange} placeholder={"price"}/>
+                <input type="text" name={"year"} value={year} onChange={onYearChange} placeholder={"year"}/>
                 <input type="submit"/>
             </form>
         </div>
 
         <div className={"info-car"}>
             {
-                cars.map(thisCars => <Inform key={thisCars.id} thisCars={thisCars} delFunction={delFunction} patchFunction={patchFunction}/>)
+                cars.map(thisCars => <Inform key={thisCars.id} thisCars={thisCars} patchFunction={patchFunction}/>)
             }
         </div>
     </div>
