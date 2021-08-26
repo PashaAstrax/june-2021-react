@@ -2,7 +2,13 @@
 const urlTemp = "http://91.201.233.14/api/v1/cars"
 
 const getCars = () => {
-    return fetch(urlTemp).then(value => value.json())
+    return fetch(urlTemp)
+        .then(value => value.json())
+}
+
+const getCar = (id) => {
+    return fetch(urlTemp + '/' + id)
+        .then(value => value.json())
 }
 
 const saveCar = (car) => {
@@ -17,8 +23,8 @@ const saveCar = (car) => {
         .then((json) => console.log("new car:", json));
 }
 
-const updateCar = (car) => {
-    fetch(urlTemp + "/" + car.id, {
+const updateCar = (car, id) => {
+    fetch(urlTemp + "/" + id, {
         method: 'PATCH',
         body: JSON.stringify(car),
         headers: {
@@ -30,4 +36,4 @@ const updateCar = (car) => {
 }
 
 
-export {getCars, saveCar, updateCar}
+export {getCars, getCar, saveCar, updateCar}
