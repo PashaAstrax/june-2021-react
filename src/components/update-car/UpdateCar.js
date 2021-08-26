@@ -1,6 +1,4 @@
-
 import {useEffect, useState} from "react";
-// import './UpdateCar.css'
 import {getCar, getCars, updateCar} from "../../services/api.service";
 
 export default function UpdateCar() {
@@ -16,7 +14,7 @@ export default function UpdateCar() {
         updateCar(formState, formState.id)
     }
 
-    let [formState, setFormState] = useState({model: '', price: '', year: ''})
+    let [formState, setFormState] = useState({model: "", price: "", year: ""})
 
     let onFormChange = (e) => {
         setFormState({...formState, [e.target.name]: e.target.value})
@@ -29,24 +27,24 @@ export default function UpdateCar() {
     return (
         <div>
             <div>
-                <form className={'select_form'} onChange={onSelectChange}>
-                    <label htmlFor="cars">Select a car</label>
-                    <select name="cars" id="cars">
+                <form onChange={onSelectChange}>
+                    <label><i>Select the car</i> - </label>
+                    <select>
                         {
-                            cars.map(thisCar => <option value={thisCar.id}>{thisCar.model}</option>)
+                            cars.map(thisCar => <option key={thisCar.id} value={thisCar.id}>{thisCar.model}</option>)
                         }
                     </select>
                 </form>
             </div>
 
             <div>
-                <form className={'edit_form'} onSubmit={onFormSubmit}>
-                    <input type="text" name={'model'} value={formState.model} onChange={onFormChange} placeholder={'model'}/>
-                    <input type="text" name={'price'} value={formState.price}  onChange={onFormChange} placeholder={'price'}/>
-                    <input type="text" name={'year'} value={formState.year} onChange={onFormChange} placeholder={'year'}/>
-                    <button type={'submit'}>update</button>
+                <form onSubmit={onFormSubmit}>
+                    <input type="text" name={"model"} value={formState.model} onChange={onFormChange} placeholder={"model"}/>
+                    <input type="number" name={"price"} value={formState.price}  onChange={onFormChange} placeholder={"price"}/>
+                    <input type="number" name={"year"} value={formState.year} onChange={onFormChange} placeholder={"year"}/>
+                    <input type="submit"/>
                 </form>
             </div>
         </div>
     );
-}
+};
