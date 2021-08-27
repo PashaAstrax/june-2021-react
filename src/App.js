@@ -16,4 +16,4 @@ export default function App() {
         <button onClick={() => dispatch({obj: "2", diya: "-"})}>-</button>
     </div>
   );
-}
+};
