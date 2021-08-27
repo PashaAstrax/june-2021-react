@@ -1,13 +1,10 @@
 const reducer = (state, action) => {
     if (action.obj === "1" && action.diya === "+") {
-        return {...state, a: state.a++}
+        return {...state, a: state.a + 10}
     } else if (action.obj === "1" && action.diya === "-") {
-        return {...state, a: state.a--}
-    } else if (action.obj === "2" && action.diya === "+") {
-        return {...state, b: state.b++}
-    } else if (action.obj === "2" && action.diya === "-") {
-        return {...state, b: state.b--}
+        return {...state, a: state.a - 2}
     }
     return {...state};
 }
+
 export default reducer;
