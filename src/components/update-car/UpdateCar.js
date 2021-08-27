@@ -4,17 +4,16 @@ import {getCar, getCars, updateCar} from "../../services/api.service";
 export default function UpdateCar() {
 
     let [cars, setCars] = useState([])
+    let [formState, setFormState] = useState({model: "", price: "", year: ""})
 
     useEffect(() => {
-        getCars().then(value => setCars([...value]))
-    }, [cars])
+        getCars().then(value => setCars([...value.reverse()]))
+    }, [])
 
     let onFormSubmit = (e) => {
         e.preventDefault()
         updateCar(formState, formState.id)
     }
-
-    let [formState, setFormState] = useState({model: "", price: "", year: ""})
 
     let onFormChange = (e) => {
         setFormState({...formState, [e.target.name]: e.target.value})

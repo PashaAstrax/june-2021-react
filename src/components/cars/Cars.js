@@ -6,7 +6,7 @@ export default function Cars() {
     let [cars, setCars] = useState([])
 
     useEffect(() => {
-        getCars().then(value => setCars([...value]))
+        getCars().then(value => setCars([...value.reverse()]))
     }, [])
   return (
     <div>
